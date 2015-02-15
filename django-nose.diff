@@ -1,0 +1,23 @@
+--- runner.py.orig      2014-05-13 20:08:21.000000000 +0200
++++ runner.py   2014-09-20 09:32:58.091036606 +0200
+@@ -10,6 +10,8 @@
+ from __future__ import print_function
+ import os
+ import sys
++import warnings
++
+ from optparse import make_option
+ from types import MethodType
+ 
+@@ -20,7 +22,9 @@
+ from django.core.management.commands.loaddata import Command
+ from django.db import connections, transaction, DEFAULT_DB_ALIAS, models
+ from django.db.backends.creation import BaseDatabaseCreation
+-from django.test.simple import DjangoTestSuiteRunner
++with warnings.catch_warnings():
++    warnings.filterwarnings('ignore', r'^The django\.test\.')
++    from django.test.simple import DjangoTestSuiteRunner
+ from django.utils.importlib import import_module
+ 
+ import nose.core
+
