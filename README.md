@@ -1,2 +1,3 @@
-# wp_kit_test
-Testing companion project for WPkit
+# Testing companion project for WPkit
+
+This repository contains a Django project used for testing WPkit.
